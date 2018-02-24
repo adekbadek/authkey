@@ -7,7 +7,7 @@ const { send } = require('./mailer')
 
 const app = express()
 
-app.post('/request-key/:address', (req, res) => {
+app.post('/request/:address', (req, res) => {
   const {address} = req.params
   if (validateEmail(address)) {
     const authkey = generate()
@@ -21,6 +21,16 @@ app.post('/request-key/:address', (req, res) => {
     res.send({message})
   } else {
     res.status(400).send({error: `${address} is not a valid email address`})
+  }
+})
+
+app.post('/verify/:authkey', (req, res) => {
+  const {authkey} = req.params
+  const found = database.verifyKey(authkey)
+  if (found) {
+    res.send({message: `key ${authkey} is valid`})
+  } else {
+    res.status(401).send({message: `key ${authkey} is not valid`})
   }
 })
 

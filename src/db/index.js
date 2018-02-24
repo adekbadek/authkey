@@ -7,22 +7,22 @@ const db = low(adapter)
 
 db._.mixin(lodashId)
 
-const KEY = 'addresses'
+const MAIN_KEY = 'addresses'
 
 const collection = db
-  .defaults({ [KEY]: [] })
-  .get(KEY)
+  .defaults({ [MAIN_KEY]: [] })
+  .get(MAIN_KEY)
 
-const getByAddress = (address) => (
+const findByProp = (prop) => (
   db
-    .get(KEY)
-    .find({ address })
-    .value()
+    .get(MAIN_KEY)
+    .find(prop)
+
 )
 
 module.exports = {
   create: (props) => {
-    const found = getByAddress(props.address)
+    const found = findByProp({address: props.address}).value()
     if (found) {
       return {exists: true}
     } else {
@@ -30,9 +30,25 @@ module.exports = {
         .insert({
           createdAt: +new Date,
           updatedAt: +new Date,
+          verificationsCount: 0,
           ...props,
         })
         .write()
     }
   },
+  verifyKey: authkey => {
+    const found = findByProp({authkey})
+    const foundValue = found.value()
+    if (foundValue) {
+      found
+        .assign({
+          lastVerified: +new Date,
+          verificationsCount: foundValue.verificationsCount + 1
+        })
+        .write()
+      return found
+    } else {
+      return false
+    }
+  }
 }
