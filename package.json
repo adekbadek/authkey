@@ -1,0 +1,25 @@
+{
+  "name": "authkey",
+  "version": "0.0.0",
+  "description": "simple app key issue and verification",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "authorization",
+    "keygen",
+    "key"
+  ],
+  "author": "Adam Boro <adam@adamboro.com> (https://adamboro.com/)",
+  "license": "ISC",
+  "dependencies": {
+    "email-validator": "^1.1.1",
+    "express": "^4.16.2",
+    "lowdb": "^1.0.0",
+    "nodemon": "^1.15.1",
+    "uid-generator": "^1.0.0"
+  }
+}
