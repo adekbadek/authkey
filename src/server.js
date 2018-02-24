@@ -16,7 +16,7 @@ app.post('/request/:address', (req, res) => {
     if (newAddress.exists) {
       message = `a key for this address was already requested, key was resent`
     }
-    send({address, authkey})
+    send({to: address, authkey})
 
     res.send({message})
   } else {

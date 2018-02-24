@@ -17,7 +17,6 @@ const findByProp = (prop) => (
   db
     .get(MAIN_KEY)
     .find(prop)
-
 )
 
 module.exports = {
