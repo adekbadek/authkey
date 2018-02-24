@@ -4,7 +4,7 @@
   "description": "simple app key issue and verification",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js",
+    "dev": "nodemon index.js --ignore '*.json'",
     "start": "node index.js",
     "test": "jest --watch"
   },
@@ -19,6 +19,7 @@
     "email-validator": "^1.1.1",
     "express": "^4.16.2",
     "jest": "^22.4.2",
+    "lodash-id": "^0.14.0",
     "lowdb": "^1.0.0",
     "nodemon": "^1.15.1",
     "supertest": "^3.0.0",
