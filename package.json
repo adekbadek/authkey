@@ -7,7 +7,10 @@
     "dev": "nodemon index.js --ignore '*.json'",
     "start": "node index.js",
     "test": "jest --watch",
-    "lint": "eslint ./src ./index.js ./__tests__"
+    "lint": "eslint ./src ./index.js ./__tests__",
+    "commit": "git-cz",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "keywords": [
     "authorization",
@@ -30,11 +33,19 @@
     "uid-generator": "^1.0.0"
   },
   "devDependencies": {
+    "commitizen": "^2.9.6",
+    "conventional-changelog-cli": "^1.3.15",
     "eslint": "^4.18.1",
     "eslint-config-standard": "^11.0.0",
     "eslint-plugin-import": "^2.9.0",
     "eslint-plugin-node": "^6.0.1",
     "eslint-plugin-promise": "^3.6.0",
-    "eslint-plugin-standard": "^3.0.1"
+    "eslint-plugin-standard": "^3.0.1",
+    "semantic-release": "^12.4.1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
