@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --watch",
-    "test:single": "jest --coverage",
+    "test:single": "jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "lint": "eslint ./src ./index.js ./__tests__",
     "commit": "git-cz",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
@@ -30,6 +30,7 @@
     "branch": "master"
   },
   "dependencies": {
+    "coveralls": "^3.0.0",
     "dotenv": "^5.0.0",
     "email-validator": "^1.1.1",
     "express": "^4.16.2",
@@ -57,7 +58,9 @@
   },
   "jest": {
     "globalSetup": "./jest-setup.js",
-    "watchPathIgnorePatterns": ["<rootDir>/__tests__/db.json"]
+    "watchPathIgnorePatterns": [
+      "<rootDir>/__tests__/db.json"
+    ]
   },
   "config": {
     "commitizen": {

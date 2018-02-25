@@ -5,7 +5,7 @@ Basically a very limited version of what [keygen.sh](https://keygen.sh/) does.
 
 [![npm](https://img.shields.io/npm/v/authkey.svg)](https://www.npmjs.com/package/authkey)
 [![Build Status](https://travis-ci.org/adekbadek/authkey.svg?branch=master)](https://travis-ci.org/adekbadek/authkey)
-[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![Coverage Status](https://coveralls.io/repos/github/adekbadek/authkey/badge.svg?branch=master)](https://coveralls.io/github/adekbadek/authkey?branch=master)[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Quick start
 
