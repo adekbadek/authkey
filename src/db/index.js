@@ -27,8 +27,8 @@ module.exports = {
     } else {
       return collection
         .insert({
-          createdAt: +new Date,
-          updatedAt: +new Date,
+          createdAt: +new Date(),
+          updatedAt: +new Date(),
           verificationsCount: 0,
           ...props,
         })
@@ -41,13 +41,13 @@ module.exports = {
     if (foundValue) {
       found
         .assign({
-          lastVerified: +new Date,
-          verificationsCount: foundValue.verificationsCount + 1
+          lastVerified: +new Date(),
+          verificationsCount: foundValue.verificationsCount + 1,
         })
         .write()
       return found
     } else {
       return false
     }
-  }
+  },
 }

@@ -16,12 +16,11 @@ const send = ({to, authkey}) => {
     to,
     subject: `Auth key for ${process.env.PRODUCT_NAME}`,
     html: `Your auth key for ${process.env.PRODUCT_NAME} is <strong>${authkey}</strong>.`,
-    text: `Your auth key for ${process.env.PRODUCT_NAME} is ${authkey}.`
+    text: `Your auth key for ${process.env.PRODUCT_NAME} is ${authkey}.`,
   }, function (err, info) {
     if (err) {
       console.log('Error: ' + err)
-    }
-    else {
+    } else {
       console.log('Response: ' + info)
     }
   })
