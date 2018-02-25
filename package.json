@@ -7,10 +7,11 @@
     "dev": "nodemon index.js --ignore '*.json'",
     "start": "node index.js",
     "test": "jest --watch",
+    "test:single": "jest",
     "lint": "eslint ./src ./index.js ./__tests__",
     "commit": "git-cz",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+    "semantic-release": "semantic-release"
   },
   "keywords": [
     "authorization",
@@ -27,6 +28,9 @@
     "url": "https://github.com/adekbadek/authkey/issues"
   },
   "homepage": "https://github.com/adekbadek/authkey#readme",
+  "release": {
+    "branch": "master"
+  },
   "dependencies": {
     "dotenv": "^5.0.0",
     "email-validator": "^1.1.1",
