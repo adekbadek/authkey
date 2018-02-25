@@ -19,6 +19,14 @@
   ],
   "author": "Adam Boro <adam@adamboro.com> (https://adamboro.com/)",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adekbadek/authkey.git"
+  },
+  "bugs": {
+    "url": "https://github.com/adekbadek/authkey/issues"
+  },
+  "homepage": "https://github.com/adekbadek/authkey#readme",
   "dependencies": {
     "dotenv": "^5.0.0",
     "email-validator": "^1.1.1",
