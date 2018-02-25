@@ -4,6 +4,7 @@
 Basically a very limited version of what [keygen.sh](https://keygen.sh/) does.
 
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![Build Status](https://travis-ci.org/adekbadek/authkey.svg?branch=master)](https://travis-ci.org/adekbadek/authkey)
 
 ## Installing / Getting started
 
