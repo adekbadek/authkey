@@ -1,6 +1,8 @@
 const nodemailer = require('nodemailer')
 const mg = require('nodemailer-mailgun-transport')
 
+const isTest = process.env.NODE_ENV === 'test'
+
 const auth = {
   auth: {
     api_key: process.env.MAILGUN_API_KEY,
@@ -8,9 +10,12 @@ const auth = {
   },
 }
 
-const nodemailerMailgun = nodemailer.createTransport(mg(auth))
+const nodemailerMailgun = !isTest && nodemailer.createTransport(mg(auth))
 
 const send = ({to, authkey}) => {
+  if (isTest) {
+    return
+  }
   nodemailerMailgun.sendMail({
     from: `myemail@${process.env.MAILGUN_DOMAIN}`,
     to,
