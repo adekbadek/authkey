@@ -53,10 +53,10 @@ For the versions available, see the [releases](/releases).
 git clone https://github.com/adekbadek/authkey.git
 cd authkey/
 npm i
-npm run dev
+npm t
 ```
 
-Will install the dependencies and run development server.
+Will install the dependencies and run tests in watch mode.
 
 ### Tests
 
