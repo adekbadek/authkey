@@ -16,6 +16,8 @@ npm i
 npm run dev
 ```
 
+Set up env variables by creating `.env` file (see `.env-example`). You'll need a [mailgun](https://www.mailgun.com/) account for some of them.
+
 Will install the dependencies and run development server.
 
 ### Running in production environment
