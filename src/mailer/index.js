@@ -3,37 +3,38 @@ const mg = require('nodemailer-mailgun-transport')
 
 const isTest = process.env.NODE_ENV === 'test'
 
-const sendMail = ({nodemailerInstance, config}) => ({to, authkey}) => {
-  if (isTest) {
-    return
-  }
-  nodemailerInstance.sendMail({
-    from: `myemail@${config.mailgun.domain}`,
-    to,
-    subject: `Auth key for ${config.productName}`,
-    html: `Your auth key for ${config.productName} is <strong>${authkey}</strong>.`,
-    text: `Your auth key for ${config.productName} is ${authkey}.`,
-  }, function (err, info) {
-    if (err) {
-      console.log('Error: ' + err)
-    } else {
-      console.log('Response: ' + info)
-    }
-  })
-}
+const getMailOptions = ({to, config, authkey}) => ({
+  from: `myemail@${config.mailgun.domain}`,
+  to,
+  subject: `Auth key for ${config.productName}`,
+  html: `Your auth key for ${config.productName} is <strong>${authkey}</strong>.`,
+  text: `Your auth key for ${config.productName} is ${authkey}.`,
+})
 
-module.exports = (config) => {
-  const auth = {
-    auth: {
-      api_key: config.mailgun.apiKey,
-      domain: config.mailgun.domain,
-    },
+const sendMail = ({nodemailerInstance, config}) => ({to, authkey}) => new Promise((resolve, reject) => {
+  if (isTest) {
+    resolve()
   }
-  const nodemailerMailgun = !isTest && nodemailer.createTransport(mg(auth))
-  return ({
-    send: sendMail({
-      nodemailerInstance: nodemailerMailgun,
-      config,
-    }),
-  })
+  nodemailerInstance.sendMail(
+    getMailOptions({to, config, authkey}),
+    (err, info) => err ? reject(err) : resolve(info)
+  )
+})
+
+module.exports = {
+  mailer: (config) => {
+    const auth = {
+      auth: {
+        api_key: config.mailgun.apiKey,
+        domain: config.mailgun.domain,
+      },
+    }
+    return ({
+      send: sendMail({
+        nodemailerInstance: nodemailer.createTransport(mg(auth)),
+        config,
+      }),
+    })
+  },
+  getMailOptions,
 }

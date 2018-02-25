@@ -51,5 +51,14 @@ module.exports = ({dbFile = 'db.json'}) => {
         return false
       }
     },
+    getKeyByAddress: address => (
+      findByProp({address})
+        .value()
+    ),
+    reset: () => {
+      db.get(MAIN_KEY)
+        .remove()
+        .write()
+    },
   }
 }

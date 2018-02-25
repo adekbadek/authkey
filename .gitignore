@@ -1,4 +1,4 @@
 node_modules
-__tests__/*.json
+__tests__/db.json
 .env
 coverage

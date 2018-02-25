@@ -55,6 +55,10 @@
   "engines": {
     "node": ">=8"
   },
+  "jest": {
+    "globalSetup": "./jest-setup.js",
+    "watchPathIgnorePatterns": ["<rootDir>/__tests__/db.json"]
+  },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"

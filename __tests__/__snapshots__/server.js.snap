@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`POST /request/:address should respond with special message if address exists 1`] = `
+Object {
+  "message": "a key for this address was already requested, key was resent",
+}
+`;
