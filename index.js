@@ -1,9 +1,12 @@
-require('dotenv').config()
+const server = require('./src/server')
 
-const app = require('./src/server')
-
-const PORT = 3000
-
-app.listen(PORT, () => {
-  console.log(`listening on port ${PORT}`)
-})
+module.exports = ({
+  port = 3000,
+  ...config
+}) => {
+  return ({
+    listen: () => server(config).listen(port, () => {
+      console.log(`listening on port ${port}`)
+    }),
+  })
+}

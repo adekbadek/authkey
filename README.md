@@ -3,48 +3,35 @@
 
 Basically a very limited version of what [keygen.sh](https://keygen.sh/) does.
 
-[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![npm](https://img.shields.io/npm/v/authkey.svg)](https://www.npmjs.com/package/authkey)
 [![Build Status](https://travis-ci.org/adekbadek/authkey.svg?branch=master)](https://travis-ci.org/adekbadek/authkey)
+[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-## Installing / Getting started
+## Quick start
 
-### Setting up dev
+1. get an API key from [mailgun](https://www.mailgun.com/)
 
-```shell
-git clone https://github.com/adekbadek/authkey.git
-cd authkey/
-npm i
-npm run dev
-```
+1. install
 
-Set up env variables by creating `.env` file (see `.env-example`). You'll need a [mailgun](https://www.mailgun.com/) account for some of them.
+  ```shell
+  npm i authkey
+  ```
 
-Will install the dependencies and run development server.
+1. use
 
-### Running in production environment
+  ```javascript
+  const authkey = require('authkey')
 
-```shell
-npm start
-```
+  authkey({
+    mailgun: {
+      apiKey: 'api-619723461238973480',
+      domain: 'mydomain.com',
+    },
+    productName: 'SuperThing',
+  }).listen()
+  ```
 
-## Versioning
-
-[SemVer](http://semver.org/) is used (with help of [semantic-release](https://github.com/semantic-release/semantic-release)).
-For the versions available, see the [link to tags on this repository](/tags).
-
-## Tests
-
-with [Jest](https://facebook.github.io/jest/)
-
-```shell
-npm t
-```
-
-## Style guide
-
-using [Standard](https://standardjs.com/)
-
-## Api Reference
+## API Reference
 
 | verb | endpoint       | what it does     |
 | :------------- | :------------- | :------------- |
@@ -54,3 +41,31 @@ using [Standard](https://standardjs.com/)
 ## Database
 
 a JSON file handled with [lowdb](https://github.com/typicode/lowdb)
+
+## Versioning
+
+[SemVer](http://semver.org/) is used (with help of [semantic-release](https://github.com/semantic-release/semantic-release)).
+For the versions available, see the [releases](/releases).
+
+## Contributing
+
+```shell
+git clone https://github.com/adekbadek/authkey.git
+cd authkey/
+npm i
+npm run dev
+```
+
+Will install the dependencies and run development server.
+
+### Tests
+
+with [Jest](https://facebook.github.io/jest/)
+
+```shell
+npm t
+```
+
+### Style guide
+
+using [Standard](https://standardjs.com/)
