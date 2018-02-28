@@ -45,7 +45,6 @@ a JSON file handled with [lowdb](https://github.com/typicode/lowdb)
 ## Versioning
 
 [SemVer](http://semver.org/) is used (with help of [semantic-release](https://github.com/semantic-release/semantic-release)).
-For the versions available, see the [releases](/releases).
 
 ## Contributing
 
