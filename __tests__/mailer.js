@@ -4,7 +4,7 @@ it('getMailOptions', () => {
   const mailOptions = getMailOptions({
     to: 'someone@maillcom',
     config: {
-      mailgun: {domain: process.env.MAILGUN_DOMAIN},
+      from: 'someone@mail.com',
       productName: process.env.PRODUCT_NAME,
     },
     authkey: '72389y4cr8gf23',

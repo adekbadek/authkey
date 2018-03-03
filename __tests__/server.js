@@ -3,10 +3,7 @@ const request = require('supertest')
 const authkey = require('../src/server.js')
 
 const instance = authkey({
-  mailgun: {
-    apiKey: process.env.MAILGUN_API_KEY,
-    domain: process.env.MAILGUN_DOMAIN,
-  },
+  from: 'someone@mail.com',
   productName: process.env.PRODUCT_NAME,
   dbFile: '__tests__/db.json',
 })

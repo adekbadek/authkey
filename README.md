@@ -9,7 +9,7 @@ Basically a very limited version of what [keygen.sh](https://keygen.sh/) does.
 
 ## Quick start
 
-1. get an API key from [mailgun](https://www.mailgun.com/)
+1. configure [Amazon SES](https://aws.amazon.com/ses/) and create `aws-config.json` file.
 
 1. install
 
@@ -23,10 +23,7 @@ Basically a very limited version of what [keygen.sh](https://keygen.sh/) does.
   const authkey = require('authkey')
 
   authkey({
-    mailgun: {
-      apiKey: 'api-619723461238973480',
-      domain: 'mydomain.com',
-    },
+    from: 'superthing@things.com'
     productName: 'SuperThing',
   }).listen()
   ```

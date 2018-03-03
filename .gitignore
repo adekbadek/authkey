@@ -2,3 +2,4 @@ node_modules
 __tests__/db.json
 .env
 coverage
+aws-config.json
