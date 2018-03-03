@@ -3,9 +3,9 @@
 exports[`getMailOptions 1`] = `
 Object {
   "from": "someone@mail.com",
-  "html": "Your auth key for MyProduct is <strong>72389y4cr8gf23</strong>.",
+  "html": "Your auth key for MyProduct is <strong>72389y4cr8gf23</strong>",
   "subject": "Auth key for MyProduct",
-  "text": "Your auth key for MyProduct is 72389y4cr8gf23.",
+  "text": "Your auth key for MyProduct is 72389y4cr8gf23",
   "to": "someone@maillcom",
 }
 `;

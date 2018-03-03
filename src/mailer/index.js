@@ -7,8 +7,8 @@ const getMailOptions = ({to, config, authkey}) => ({
   from: config.from,
   to,
   subject: `Auth key for ${config.productName}`,
-  html: `Your auth key for ${config.productName} is <strong>${authkey}</strong>.`,
-  text: `Your auth key for ${config.productName} is ${authkey}.`,
+  html: `Your auth key for ${config.productName} is <strong>${authkey}</strong>`,
+  text: `Your auth key for ${config.productName} is ${authkey}`,
 })
 
 const sendMail = ({nodemailerTransport, config}) => ({to, authkey}) => new Promise((resolve, reject) => {
