@@ -1,4 +1,5 @@
 const express = require('express')
+const cors = require('cors')
 
 const { validateEmail } = require('./helpers')
 const database = require('./db')
@@ -7,6 +8,8 @@ const { mailer } = require('./mailer')
 
 module.exports = (config) => {
   const app = express()
+  app.use(cors())
+
   const mailerInstance = mailer(config)
   const databaseInstance = database(config)
 
