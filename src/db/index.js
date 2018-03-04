@@ -24,7 +24,7 @@ module.exports = ({dbFile = 'db.json'}) => {
     create: (props) => {
       const found = findByProp({address: props.address}).value()
       if (found) {
-        return {exists: true}
+        return {exists: true, ...found}
       } else {
         return collection
           .insert({

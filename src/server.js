@@ -16,14 +16,19 @@ module.exports = (config) => {
   app.post('/request/:address', async (req, res) => {
     const {address} = req.params
     if (validateEmail(address)) {
-      const authkey = generate()
-      const newAddress = databaseInstance.create({address, authkey})
-      let message = `done, check your email`
+      const newAddress = databaseInstance.create({address, authkey: generate()})
+      let message = `Done, check your email`
       if (newAddress.exists) {
-        message = `a key for this address was already requested, key was resent`
+        message = `A key for this address was already requested, key has been resent`
       }
-      await mailerInstance.send({to: address, authkey})
-      res.send({message})
+      mailerInstance
+        .send({to: address, authkey: newAddress.authkey})
+        .then(() => {
+          res.send({message})
+        })
+        .catch(({code, statusCode}) => {
+          res.status(statusCode).send({message: code})
+        })
     } else {
       res.status(400).send({error: `${address} is not a valid email address`})
     }
