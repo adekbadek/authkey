@@ -1,6 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getMailOptions 1`] = `
+exports[`getMailOptions handles custom message 1`] = `
+Object {
+  "from": "someone@mail.com",
+  "html": "Hello! The auth key is MyProduct is<br /><strong>72389y4cr8gf23</strong>",
+  "subject": "Your personal auth key for MyProduct",
+  "text": "Hello! The auth key is MyProduct is 72389y4cr8gf23",
+  "to": "someone@maillcom",
+}
+`;
+
+exports[`getMailOptions handles default message 1`] = `
 Object {
   "from": "someone@mail.com",
   "html": "Your auth key for MyProduct is <strong>72389y4cr8gf23</strong>",

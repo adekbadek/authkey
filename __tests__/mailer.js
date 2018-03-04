@@ -1,13 +1,26 @@
 const {getMailOptions} = require('../src/mailer')
 
-it('getMailOptions', () => {
-  const mailOptions = getMailOptions({
+describe('getMailOptions', () => {
+  const createMailOptions = (config) => getMailOptions({
     to: 'someone@maillcom',
-    config: {
-      from: 'someone@mail.com',
-      productName: process.env.PRODUCT_NAME,
-    },
+    config,
     authkey: '72389y4cr8gf23',
   })
-  expect(mailOptions).toMatchSnapshot()
+  it('handles default message', () => {
+    expect(createMailOptions({
+      from: 'someone@mail.com',
+      productName: process.env.PRODUCT_NAME,
+    })).toMatchSnapshot()
+  })
+  it('handles custom message', () => {
+    expect(createMailOptions({
+      from: 'someone@mail.com',
+      productName: process.env.PRODUCT_NAME,
+      message: {
+        subject: ({config}) => `Your personal auth key for ${config.productName}`,
+        html: ({config, authkey}) => `Hello! The auth key is ${config.productName} is<br /><strong>${authkey}</strong>`,
+        text: ({config, authkey}) => `Hello! The auth key is ${config.productName} is ${authkey}`,
+      },
+    })).toMatchSnapshot()
+  })
 })
