@@ -2,6 +2,6 @@
 
 exports[`POST /request/:address should respond with special message if address exists 1`] = `
 Object {
-  "message": "A key for this address was already requested, key has been resent",
+  "message": "A key for this address was already requested, it has been resent",
 }
 `;

@@ -19,7 +19,7 @@ module.exports = (config) => {
       const newAddress = databaseInstance.create({address, authkey: generate()})
       let message = `Done, check your email`
       if (newAddress.exists) {
-        message = `A key for this address was already requested, key has been resent`
+        message = `A key for this address was already requested, it has been resent`
       }
       mailerInstance
         .send({to: address, authkey: newAddress.authkey})
