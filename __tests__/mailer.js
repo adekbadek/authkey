@@ -1,4 +1,4 @@
-const {getMailOptions} = require('../src/mailer')
+const {getMailOptions, mailer} = require('../src/mailer')
 
 describe('getMailOptions', () => {
   const createMailOptions = (config) => getMailOptions({
@@ -22,5 +22,13 @@ describe('getMailOptions', () => {
         text: ({config, authkey}) => `Hello! The auth key is ${config.productName} is ${authkey}`,
       },
     })).toMatchSnapshot()
+  })
+})
+
+describe('mailer', () => {
+  it('throws if no mailerConfig is provided', () => {
+    expect(() => {
+      mailer({})
+    }).toThrow(/mailerConfig must be/)
   })
 })

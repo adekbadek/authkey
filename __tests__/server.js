@@ -6,6 +6,7 @@ const instance = authkey({
   from: 'someone@mail.com',
   productName: process.env.PRODUCT_NAME,
   dbFile: '__tests__/db.json',
+  mailerConfig: {},
 })
 
 beforeEach(() => {

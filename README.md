@@ -9,7 +9,7 @@ Basically a very limited version of what [keygen.sh](https://keygen.sh/) does.
 
 ## Quick start
 
-1. configure [Amazon SES](https://aws.amazon.com/ses/) and create `aws-config.json` file.
+1. configure [Amazon SES](https://aws.amazon.com/ses/) or get some gmail creds
 
 1. install
 
@@ -25,8 +25,24 @@ Basically a very limited version of what [keygen.sh](https://keygen.sh/) does.
   authkey({
     from: 'superthing@things.com'
     productName: 'SuperThing',
+    mailerConfig: {
+      // see below for other services
+      type: 'gmail',
+      credentials: {
+        user: process.env.GMAIL_USER,
+        pass: process.env.GMAIL_PASS,
+      }
+    },
   }).listen()
   ```
+
+### `mailerConfig` options
+
+| service (`type`) | required `credentials` |
+| :------------- | :------------- |
+| `amazonSES` | `accessKeyId`, `secretAccessKey`, `region` |
+| `gmail` | `user`, `pass` |
+
 
 ## API Reference
 

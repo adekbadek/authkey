@@ -1,5 +1,4 @@
 const nodemailer = require('nodemailer')
-const aws = require('aws-sdk')
 
 const isTest = process.env.NODE_ENV === 'test'
 
@@ -32,24 +31,31 @@ const sendMail = ({nodemailerTransport, config}) => ({to, authkey}) => new Promi
   )
 })
 
-const getSESTransprter = () => {
-  if (isTest) {
-  } else {
-    // configure AWS SDK
-    aws.config.loadFromPath('aws-config.json')
+const getNodemailerTransport = ({type, credentials}) => {
+  if (!isTest) {
+    const transport = {}
 
-    // create Nodemailer SES transporter
-    return nodemailer.createTransport({
-      SES: new aws.SES(),
-    })
+    if (type === 'amazonSES') {
+      const aws = require('aws-sdk')
+      aws.config.update(credentials)
+      transport.SES = new aws.SES()
+    } else if (type === 'gmail') {
+      transport.service = 'gmail'
+      transport.auth = credentials
+    }
+
+    return nodemailer.createTransport(transport)
   }
 }
 
 module.exports = {
-  mailer: (config) => {
+  mailer: ({mailerConfig, ...config}) => {
+    if (!mailerConfig) {
+      throw new Error(`mailerConfig must be provided in config object`)
+    }
     return ({
       send: sendMail({
-        nodemailerTransport: getSESTransprter(),
+        nodemailerTransport: getNodemailerTransport(mailerConfig),
         config,
       }),
     })
